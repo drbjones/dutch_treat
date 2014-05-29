@@ -1,0 +1,21 @@
+<div class="page-header">
+  <h1>Expense #<%= @expense.id %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Date occured</dt>
+  <dd><%= @expense.date_occured %></dd>
+
+  <dt>Event</dt>
+  <dd><%= @expense.event_id %></dd>
+
+  <dt>Amount</dt>
+  <dd><%= @expense.amount %></dd>
+
+  <dt>Description</dt>
+  <dd><%= @expense.description %></dd>
+
+  <dt>User</dt>
+  <dd><%= @expense.user_id %></dd>
+
+</dl>

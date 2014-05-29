@@ -1,0 +1,70 @@
+<div class="page-header">
+  <h1>Edit Expense #<%= @expense.id %></h1>
+</div>
+
+<% if @expense.errors.any? %>
+  <% @expense.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<form action="/update_expense/<%= @expense.id %>" class="form-horizontal">
+  <!-- Label and input for date_occured -->
+  <div class="form-group">
+    <label for="date_occured" class="col-sm-2 control-label">
+      Date occured
+    </label>
+    <div class="col-sm-10">
+      <input type="text" id="date_occured" name="date_occured" placeholder="Date occured" class="form-control" value="<%= @expense.date_occured %>">
+    </div>
+  </div>
+
+  <!-- Label and input for event_id -->
+  <div class="form-group">
+    <label for="event_id" class="col-sm-2 control-label">
+      Event
+    </label>
+    <div class="col-sm-10">
+      <input type="text" id="event_id" name="event_id" placeholder="Event" class="form-control" value="<%= @expense.event_id %>">
+    </div>
+  </div>
+
+  <!-- Label and input for amount -->
+  <div class="form-group">
+    <label for="amount" class="col-sm-2 control-label">
+      Amount
+    </label>
+    <div class="col-sm-10">
+      <input type="text" id="amount" name="amount" placeholder="Amount" class="form-control" value="<%= @expense.amount %>">
+    </div>
+  </div>
+
+  <!-- Label and input for description -->
+  <div class="form-group">
+    <label for="description" class="col-sm-2 control-label">
+      Description
+    </label>
+    <div class="col-sm-10">
+      <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @expense.description %></textarea>
+    </div>
+  </div>
+
+  <!-- Label and input for user_id -->
+  <div class="form-group">
+    <label for="user_id" class="col-sm-2 control-label">
+      User
+    </label>
+    <div class="col-sm-10">
+      <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @expense.user_id %>">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <input type="submit" value="Update Expense" class="btn btn-primary">
+    </div>
+  </div>
+</form>

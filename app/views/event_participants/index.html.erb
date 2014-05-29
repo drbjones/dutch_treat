@@ -1,0 +1,44 @@
+<div class="page-header">
+  <h1>Event participants</h1>
+</div>
+
+<p><a href="/event_participants/new" class="btn btn-primary">Add a New Event Participant</a></p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>User</th>
+      <th>Event owner</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event_participants.each do |event_participant| %>
+      <tr>
+        <td><%= event_participant.event_id %></td>
+        <td><%= event_participant.user_id %></td>
+        <td><%= event_participant.event_owner %></td>
+        <td>
+          <a href="/event_participants/<%= event_participant.id %>" class="btn btn-primary">
+            <i class="fa fa-search-plus"></i>
+          </a>
+        </td>
+        <td>
+          <a href="/event_participants/<%= event_participant.id %>/edit" class="btn btn-warning">
+            <i class="fa fa-edit"></i>
+          </a>
+        </td>
+        <td>
+          <a href="/delete_event_participant/<%= event_participant.id %>" class="btn btn-danger">
+            <i class="fa fa-trash-o"></i>
+          </a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

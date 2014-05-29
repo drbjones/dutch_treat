@@ -1,0 +1,50 @@
+<div class="page-header">
+  <h1>Edit Expense Owed #<%= @expense_owed.id %></h1>
+</div>
+
+<% if @expense_owed.errors.any? %>
+  <% @expense_owed.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<form action="/update_expense_owed/<%= @expense_owed.id %>" class="form-horizontal">
+  <!-- Label and input for portion_owed -->
+  <div class="form-group">
+    <label for="portion_owed" class="col-sm-2 control-label">
+      Portion owed
+    </label>
+    <div class="col-sm-10">
+      <input type="text" id="portion_owed" name="portion_owed" placeholder="Portion owed" class="form-control" value="<%= @expense_owed.portion_owed %>">
+    </div>
+  </div>
+
+  <!-- Label and input for user_id -->
+  <div class="form-group">
+    <label for="user_id" class="col-sm-2 control-label">
+      User
+    </label>
+    <div class="col-sm-10">
+      <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @expense_owed.user_id %>">
+    </div>
+  </div>
+
+  <!-- Label and input for expense_id -->
+  <div class="form-group">
+    <label for="expense_id" class="col-sm-2 control-label">
+      Expense
+    </label>
+    <div class="col-sm-10">
+      <input type="text" id="expense_id" name="expense_id" placeholder="Expense" class="form-control" value="<%= @expense_owed.expense_id %>">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <input type="submit" value="Update Expense Owed" class="btn btn-primary">
+    </div>
+  </div>
+</form>

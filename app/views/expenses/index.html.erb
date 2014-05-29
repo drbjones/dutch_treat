@@ -1,0 +1,48 @@
+<div class="page-header">
+  <h1>Expenses</h1>
+</div>
+
+<p><a href="/expenses/new" class="btn btn-primary">Add a New Expense</a></p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Date occured</th>
+      <th>Event</th>
+      <th>Amount</th>
+      <th>Description</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @expenses.each do |expense| %>
+      <tr>
+        <td><%= expense.date_occured %></td>
+        <td><%= expense.event_id %></td>
+        <td><%= expense.amount %></td>
+        <td><%= expense.description %></td>
+        <td><%= expense.user_id %></td>
+        <td>
+          <a href="/expenses/<%= expense.id %>" class="btn btn-primary">
+            <i class="fa fa-search-plus"></i>
+          </a>
+        </td>
+        <td>
+          <a href="/expenses/<%= expense.id %>/edit" class="btn btn-warning">
+            <i class="fa fa-edit"></i>
+          </a>
+        </td>
+        <td>
+          <a href="/delete_expense/<%= expense.id %>" class="btn btn-danger">
+            <i class="fa fa-trash-o"></i>
+          </a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

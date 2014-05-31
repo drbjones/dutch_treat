@@ -18,11 +18,12 @@ class ExpensesController < ApplicationController
     @expense.amount = params[:amount]
     @expense.description = params[:description]
     @expense.user_id = params[:user_id]
+    # @expense.user_id = User.find_by(:name => params[:name]).id
 
     if @expense.save
-      redirect_to "/expenses", :notice => "Expense created successfully."
+      redirect_to "/events/#{@expense.event_id}", :notice => "Expense created successfully."
     else
-      render 'new'
+      redirect_to :back, :alert => "Expense was not created."
     end
   end
 
@@ -40,9 +41,9 @@ class ExpensesController < ApplicationController
     @expense.user_id = params[:user_id]
 
     if @expense.save
-      redirect_to "/expenses", :notice => "Expense updated successfully."
+      redirect_to "/events/#{@expense.event_id}", :notice => "Expense updated successfully."
     else
-      render 'edit'
+      redirect_to :back, :alert=> "Update not successful."
     end
   end
 

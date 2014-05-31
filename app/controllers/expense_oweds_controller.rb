@@ -13,14 +13,15 @@ class ExpenseOwedsController < ApplicationController
 
   def create
     @expense_owed = ExpenseOwed.new
-    @expense_owed.portion_owed = params[:portion_owed]
-    @expense_owed.user_id = params[:user_id]
+    @expense_owed.portion_owed = params[:portion_owed].to_f/100
+    @expense_owed.user_id = User.find_by(:name => params[:name]).id
     @expense_owed.expense_id = params[:expense_id]
+    event_id = Expense.find(params[:expense_id]).event_id
 
     if @expense_owed.save
-      redirect_to "/expense_oweds", :notice => "Expense owed created successfully."
+      redirect_to "/events/#{event_id}", :notice => "Payer added successfully."
     else
-      render 'new'
+      redirect_to :back, :alert => "Could not add payer."
     end
   end
 
@@ -44,9 +45,10 @@ class ExpenseOwedsController < ApplicationController
 
   def destroy
     @expense_owed = ExpenseOwed.find(params[:id])
+    event_id = Expense.find(ExpenseOwed.find(params[:id]).expense_id).event_id
 
     @expense_owed.destroy
 
-    redirect_to "/expense_oweds", :notice => "Expense owed deleted."
+    redirect_to "/events/#{event_id}", :notice => "Expense owed deleted."
   end
 end

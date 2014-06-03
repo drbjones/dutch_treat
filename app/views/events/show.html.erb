@@ -101,7 +101,7 @@
                 <%expense.expense_oweds.all.each do |owed|%>
                   <tr>
                     <td><%=User.find(owed.user_id).name%></td>
-                    <td><%=owed.portion_owed.to_i*100%>%</td>
+                    <td><%=(owed.portion_owed*100).to_i%>%</td>
                     <td>
                       <a href="/delete_expense_owed/<%= owed.id %>" class="btn btn-xs btn-danger">
                       <i class="fa fa-trash-o"></i>

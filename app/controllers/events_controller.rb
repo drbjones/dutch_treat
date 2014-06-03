@@ -63,4 +63,9 @@ class EventsController < ApplicationController
 
     redirect_to "/events", :notice => "Event deleted."
   end
+
+  def my_events
+    @events = current_user.events
+    render 'index'
+  end
 end

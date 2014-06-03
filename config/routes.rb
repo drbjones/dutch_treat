@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root 'events#index'
+  root 'events#my_events'
   # Routes for the Event resource:
   # CREATE
   get('/events/new', { :controller => 'events', :action => 'new' })

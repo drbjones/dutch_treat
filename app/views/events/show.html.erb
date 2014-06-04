@@ -243,11 +243,15 @@
     </thead>
     <tbody>
       <% @event.event_participants.all.each do |debtor| %>
+        <% User.find(debtor.user_id).expense_oweds.all.each do |debtor_expense_owed| %>
+        <% if Expense.find(debtor_expense_owed.expense_id).event_id == @event.id && debtor.user_id != Expense.find(debtor_expense_owed.expense_id).user_id %>
       <tr>
         <td><%= User.find(debtor.user_id).name %></td>
-        <td></td>
-        <td></td>
+        <td>$<%= debtor_expense_owed.portion_owed.to_f * Expense.find(debtor_expense_owed.expense_id).amount%></td>
+        <td><%=User.find(Expense.find(debtor_expense_owed.expense_id).user_id).name%></td>
       </tr>
+        <%end%>
+        <%end%>
       <%end%>
     </tbody>
   </table>

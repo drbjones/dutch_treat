@@ -26,9 +26,9 @@ class EventsController < ApplicationController
       @event_participant.user_id = params[:user_id]
       @event_participant.event_owner = params[:event_owner]
       @event_participant.save
-      redirect_to "/events", :notice => "Event created successfully."
+      redirect_to "/my_events", :notice => "Event created successfully."
     else
-      render 'new'
+      redirect_to :back, :alert => "Event was not created."
     end
 
 

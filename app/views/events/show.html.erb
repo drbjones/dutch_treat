@@ -92,7 +92,7 @@
       <tr>
         <% @event.expenses.each do |expense| %>
           <td><%= expense.description %></td>
-          <td>$<%=expense.amount%></td>
+          <td><%=number_to_currency(expense.amount)%></td>
           <td><%=expense.date_occured%></td>
           <td><%=User.find(expense.user_id).name%></td>
           <td>
@@ -247,7 +247,7 @@
         <% if Expense.find(debtor_expense_owed.expense_id).event_id == @event.id && debtor.user_id != Expense.find(debtor_expense_owed.expense_id).user_id %>
       <tr>
         <td><%= User.find(debtor.user_id).name %></td>
-        <td>$<%= debtor_expense_owed.portion_owed.to_f * Expense.find(debtor_expense_owed.expense_id).amount%></td>
+        <td><%= number_to_currency(debtor_expense_owed.portion_owed.to_f * Expense.find(debtor_expense_owed.expense_id).amount)%></td>
         <td><%=User.find(Expense.find(debtor_expense_owed.expense_id).user_id).name%></td>
       </tr>
         <%end%>

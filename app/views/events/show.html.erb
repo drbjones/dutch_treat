@@ -8,7 +8,7 @@
     <dl class="dl-horizontal">
     <!--   <dt></dt> -->
       <dt>Dates</dt>
-      <dd><%= @event.start_date%> to <%= @event.end_date %></dd>
+      <dd><%= @event.start_date.strftime("%B %e, %Y")%> to <%= @event.end_date.strftime("%B %e, %Y") %></dd>
 
       <dt>Location</dt>
       <dd><%= @event.location %></dd>
@@ -93,7 +93,7 @@
         <% @event.expenses.each do |expense| %>
           <td><%= expense.description %></td>
           <td><%=number_to_currency(expense.amount)%></td>
-          <td><%=expense.date_occured%></td>
+          <td><%=expense.date_occured.strftime("%B %e, %Y")%></td>
           <td><%=User.find(expense.user_id).name%></td>
           <td>
             <table class="table table-condensed">
